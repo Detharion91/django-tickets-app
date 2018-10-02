@@ -1,4 +1,7 @@
-import os, environ
+import os, environ, django_heroku
+
+# Heroku configuration
+django_heroku.settings(locals())
 
 # Reading .env file
 env = environ.Env(DEBUG=(bool, False),)
