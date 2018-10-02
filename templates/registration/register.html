@@ -1,0 +1,17 @@
+{% extends "registration/base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block auth_content %}
+    <h1>{% trans 'Register' %}</h1>
+    <hr>
+
+    <form method="POST" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">{% trans 'Register' %}</button>
+        {% endbuttons %}
+    </form>
+    <a href="{% url 'login' %}">{% trans 'Back to login' %}</a>
+{% endblock auth_content %}

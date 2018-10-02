@@ -1,0 +1,43 @@
+{% load i18n %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">{% trans 'TicketsApp' %}</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'ticket_list' %}">{% trans 'My Tickets' %}</span></a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{% url 'ticket_create' %}" class="nav-link">{% trans 'Create Ticket' %}</a>
+            </li>
+        {% endif %}
+      </ul>
+      <ul class="navbar-nav my-2 my-lg-0">
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ user.username }}
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">{% trans 'Profile' %}</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">{% trans 'Logout' %}</a>
+                    </div>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link">{% trans 'Login' %}</a>
+                </li>
+
+                <li class="nav-item">
+                    <a href="{% url 'register' %}" class="nav-link">{% trans 'Register' %}</a>
+                </li>
+            {% endif %}
+      </ul>
+    </div>
+  </nav>

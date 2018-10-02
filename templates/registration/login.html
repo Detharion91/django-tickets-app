@@ -1,0 +1,18 @@
+{% extends "registration/base.html" %}
+{% load bootstrap4 %}
+{% load i18n %}
+
+{% block auth_content %}
+    <h1>{% trans 'Login' %}</h1>
+    <hr>
+
+    <form method="POST" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">{% trans 'Login' %}</button>
+        {% endbuttons %}
+    </form>
+
+    <a href="{% url 'password_reset' %}">{% trans 'Forgotten password?' %}</a>
+{% endblock auth_content %}

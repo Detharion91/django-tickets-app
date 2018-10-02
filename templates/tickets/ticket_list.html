@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <div class="pb-4">
+        <h1>{% trans 'My Tickets' %}</h1>
+    </div>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>{% trans 'Title' %}</th>
+                <th>{% trans 'Status' %}</th>
+                <th>{% trans 'Owner' %}</th>
+                <th>{% trans 'Created Date' %}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ticket in ticket_list %}
+                <tr>
+                    <td>{{ ticket.id }}</td>
+                    <td>{{ ticket.title }}</td>
+                    <td>{{ ticket.status }}</td>
+                    <td>{{ ticket.owner.username }}</td>
+                    <td>{{ ticket.created_date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
